@@ -1,18 +1,18 @@
 # Build stage
-FROM node:18-alpine AS builder
+FROM oven/bun:1 AS builder
 WORKDIR /app
-COPY package*.json ./
-RUN npm install
+COPY package*.json bun.lockb ./
+RUN bun install
 COPY . .
-ENV NEXT_TELEMETRY_DISABLED 1
-ENV NEXT_LINT_DURING_BUILD false
-RUN npm run build
+ENV NEXT_TELEMETRY_DISABLED=1
+ENV NEXT_LINT_DURING_BUILD=false
+RUN bun run build
 
 # Production stage
-FROM node:18-alpine AS runner
+FROM oven/bun:1-slim AS runner
 WORKDIR /app
 
-ENV NODE_ENV production
+ENV NODE_ENV=production
 
 # Create prompts directory that will be used as a volume
 RUN mkdir -p /app/prompts
@@ -29,4 +29,4 @@ EXPOSE 3000
 VOLUME ["/app/prompts"]
 
 # Command to run the application
-CMD ["node", "server.js"]
+CMD ["bun", "server.js"]
