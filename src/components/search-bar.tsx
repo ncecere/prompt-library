@@ -21,7 +21,7 @@ export default function SearchBar({ onSearch }: SearchBarProps) {
 
   return (
     <div className="relative max-w-2xl mx-auto">
-      <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+      <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground" />
       <Input
         type="search"
         placeholder="Search prompts..."
@@ -32,4 +32,3 @@ export default function SearchBar({ onSearch }: SearchBarProps) {
     </div>
   )
 }
-

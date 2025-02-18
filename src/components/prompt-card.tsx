@@ -9,7 +9,7 @@ export default function PromptCard({ prompt }: { prompt: Prompt }) {
         <CardTitle>{prompt.name}</CardTitle>
       </CardHeader>
       <CardContent>
-        <p className="text-sm text-gray-600 mb-4">{prompt.description}</p>
+        <p className="text-sm text-muted-foreground mb-4">{prompt.description}</p>
         <div className="flex flex-wrap gap-2">
           {prompt.tags.map((tag) => (
             <Badge key={tag} variant="secondary">

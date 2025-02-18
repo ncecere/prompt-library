@@ -16,8 +16,8 @@ export default async function Home() {
   if (prompts.length === 0) {
     return (
       <div className="text-center py-10">
-        <h2 className="text-2xl font-bold">No prompts found</h2>
-        <p>Please make sure you have added some prompt files in the 'prompts' directory.</p>
+        <h2 className="text-2xl font-bold text-foreground">No prompts found</h2>
+        <p className="text-muted-foreground">Please make sure you have added some prompt files in the 'prompts' directory.</p>
       </div>
     )
   }
@@ -28,4 +28,3 @@ export default async function Home() {
     </div>
   )
 }
-

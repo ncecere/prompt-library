@@ -18,9 +18,9 @@ export default async function PromptPage({ params }: { params: { id: string } })
     console.log(`Prompt not found for id: ${params.id}`)
     return (
       <div className="text-center py-10">
-        <h2 className="text-2xl font-bold">Prompt not found</h2>
-        <p>The requested prompt does not exist.</p>
-        <Link href="/" className="text-blue-500 hover:underline mt-4 inline-block">
+        <h2 className="text-2xl font-bold text-foreground">Prompt not found</h2>
+        <p className="text-muted-foreground">The requested prompt does not exist.</p>
+        <Link href="/" className="text-primary hover:underline mt-4 inline-block">
           Return to home
         </Link>
       </div>
@@ -32,7 +32,7 @@ export default async function PromptPage({ params }: { params: { id: string } })
     <Card className="max-w-3xl mx-auto">
       <CardHeader>
         <CardTitle>{prompt.name}</CardTitle>
-        <p className="text-sm text-gray-600">{prompt.description}</p>
+        <p className="text-sm text-muted-foreground">{prompt.description}</p>
         <div className="flex flex-wrap gap-2 mt-2">
           {prompt.tags.map((tag) => (
             <Badge key={tag} variant="secondary">
