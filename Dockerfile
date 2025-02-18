@@ -1,12 +1,12 @@
 # Build stage
-FROM oven/bun:1 AS builder
+FROM --platform=$BUILDPLATFORM oven/bun:1 AS builder
 WORKDIR /app
 
 # Copy package files
 COPY package*.json ./
 
 # Install dependencies
-RUN bun install --verbose
+RUN bun install
 RUN bun add critters
 
 # Copy the rest of the application
@@ -20,7 +20,7 @@ ENV NEXT_LINT_DURING_BUILD=false
 RUN bun run build
 
 # Production stage
-FROM oven/bun:1-slim AS runner
+FROM --platform=$TARGETPLATFORM oven/bun:1-slim AS runner
 WORKDIR /app
 
 ENV NODE_ENV=production
