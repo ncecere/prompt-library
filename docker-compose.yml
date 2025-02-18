@@ -1,7 +1,10 @@
 version: '3.8'
 services:
   prompt-library:
-    image: ghcr.io/ncecere/prompt-library:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    # image: ghcr.io/ncecere/prompt-library:latest  # Commented out as we're building locally
     ports:
       - "3300:3000"
     volumes:
