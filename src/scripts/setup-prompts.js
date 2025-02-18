@@ -1,53 +1,47 @@
-const fs = require("fs")
-const path = require("path")
+import fs from "fs"
+import path from "path"
+import { fileURLToPath } from "url"
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
 
 const promptsDirectory = path.join(process.cwd(), "prompts")
 
-// Ensure the prompts directory exists
-if (!fs.existsSync(promptsDirectory)) {
-  console.log("Creating prompts directory...")
-  fs.mkdirSync(promptsDirectory)
-  console.log("Prompts directory created successfully.")
-} else {
-  console.log("Prompts directory already exists.")
-}
-
-// Sample prompts
 const samplePrompts = [
   {
-    filename: "1.md",
-    content: `---
-name: "Sample Prompt 1"
-description: "This is a sample prompt"
-tags: ["sample", "test"]
----
-
-This is the content of sample prompt 1.`,
+    id: 1,
+    name: "Code Refactoring",
+    description: "A prompt to guide developers in refactoring code.",
+    tags: ["coding", "refactoring"],
+    content: `Refactor the given code snippet to improve its readability and efficiency without changing its functionality. Consider applying SOLID principles, reducing complexity, and improving variable naming. Explain your refactoring decisions and how they enhance the code's maintainability.`,
   },
   {
-    filename: "2.md",
-    content: `---
-name: "Sample Prompt 2"
-description: "This is another sample prompt"
-tags: ["sample", "example"]
----
-
-This is the content of sample prompt 2.`,
+    id: 2,
+    name: "Creative Writing",
+    description: "A prompt to help with creative writing tasks.",
+    tags: ["writing", "creative"],
+    content: `Write a creative piece based on the following theme or prompt. Focus on developing engaging characters, vivid descriptions, and a compelling narrative arc. Consider the tone, pacing, and emotional impact of your writing.`,
+  },
+  {
+    id: 3,
+    name: "Marketing Strategy",
+    description: "A prompt for developing marketing strategies.",
+    tags: ["marketing", "business"],
+    content: `Develop a comprehensive marketing strategy for the given product or service. Include target audience analysis, unique value proposition, marketing channels, content strategy, and key performance indicators. Consider both short-term and long-term objectives.`,
   },
 ]
 
-// Create sample prompts if the directory is empty
-const files = fs.readdirSync(promptsDirectory)
-if (files.length === 0) {
-  console.log("No prompts found. Creating sample prompts...")
-  samplePrompts.forEach((prompt) => {
-    const filePath = path.join(promptsDirectory, prompt.filename)
-    fs.writeFileSync(filePath, prompt.content)
-    console.log(`Created sample prompt: ${prompt.filename}`)
-  })
-} else {
-  console.log(`Found ${files.length} files in the prompts directory.`)
-}
+samplePrompts.forEach((prompt) => {
+  const filePath = path.join(promptsDirectory, `${prompt.id}.md`)
+  const fileContent = `---
+id: ${prompt.id}
+name: "${prompt.name}"
+description: "${prompt.description}"
+tags: [${prompt.tags.map((tag) => `"${tag}"`).join(", ")}]
+---
 
-console.log("Setup complete.")
+${prompt.content}`
 
+  fs.writeFileSync(filePath, fileContent)
+  console.log(`Created sample prompt: ${filePath}`)
+})

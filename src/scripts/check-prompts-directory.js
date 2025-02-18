@@ -1,5 +1,9 @@
-const fs = require("fs")
-const path = require("path")
+import fs from "fs"
+import path from "path"
+import { fileURLToPath } from "url"
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
 
 const promptsDirectory = path.join(process.cwd(), "prompts")
 
@@ -21,4 +25,3 @@ if (mdFiles.length === 0) {
 } else {
   console.log(`Found ${mdFiles.length} .md files in the prompts directory.`)
 }
-

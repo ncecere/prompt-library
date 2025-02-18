@@ -2,6 +2,7 @@
   "name": "prompt-library",
   "version": "0.1.0",
   "private": false,
+  "type": "module",
   "description": "A modern web application for managing and organizing AI prompts",
   "author": "Nick Cecere",
   "license": "MIT",
