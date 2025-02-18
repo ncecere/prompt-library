@@ -1,0 +1,12 @@
+version: '3.8'
+services:
+  prompt-library:
+    image: ghcr.io/ncecere/prompt-library:latest
+    ports:
+      - "3300:3000"
+    volumes:
+      - ./prompts:/app/prompts
+    environment:
+      - NODE_ENV=production
+      - NEXT_TELEMETRY_DISABLED=1
+    restart: unless-stopped
