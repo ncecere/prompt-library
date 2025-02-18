@@ -4,6 +4,8 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm install
 COPY . .
+ENV NEXT_TELEMETRY_DISABLED 1
+ENV NEXT_LINT_DURING_BUILD false
 RUN npm run build
 
 # Production stage
