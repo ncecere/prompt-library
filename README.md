@@ -33,8 +33,7 @@ Replace `/path/to/your/prompts` with the path to your local prompts directory.
 ### Local Development
 
 Prerequisites:
-- Node.js 18.17 or later
-- npm or yarn
+- Bun 1.0 or later (Install from https://bun.sh)
 
 1. Clone the repository:
 ```bash
@@ -44,12 +43,12 @@ cd prompt-library
 
 2. Install dependencies:
 ```bash
-npm install
+bun install
 ```
 
 3. Run the development server:
 ```bash
-npm run dev
+bun run dev
 ```
 
 4. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
