@@ -1,7 +1,7 @@
 # Build stage
 FROM oven/bun:1 AS builder
 WORKDIR /app
-COPY package*.json bun.lockb ./
+COPY package*.json ./
 RUN bun install
 COPY . .
 ENV NEXT_TELEMETRY_DISABLED=1
