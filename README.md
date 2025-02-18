@@ -13,12 +13,28 @@ A modern web application for managing and organizing AI prompts, built with Next
 
 ## Getting Started
 
-### Prerequisites
+### Using Docker (Recommended)
 
+The easiest way to run Prompt Library is using Docker:
+
+```bash
+# Pull the latest image
+docker pull ghcr.io/ncecere/prompt-library:latest
+
+# Run the container with a volume for prompts
+docker run -d \
+  -p 3000:3000 \
+  -v /path/to/your/prompts:/app/prompts \
+  ghcr.io/ncecere/prompt-library:latest
+```
+
+Replace `/path/to/your/prompts` with the path to your local prompts directory.
+
+### Local Development
+
+Prerequisites:
 - Node.js 18.17 or later
 - npm or yarn
-
-### Installation
 
 1. Clone the repository:
 ```bash
@@ -29,18 +45,23 @@ cd prompt-library
 2. Install dependencies:
 ```bash
 npm install
-# or
-yarn install
 ```
 
 3. Run the development server:
 ```bash
 npm run dev
-# or
-yarn dev
 ```
 
 4. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+### Docker Build (Local)
+
+To build the Docker image locally:
+
+```bash
+docker build -t prompt-library .
+docker run -d -p 3000:3000 -v /path/to/your/prompts:/app/prompts prompt-library
+```
 
 ## Project Structure
 
