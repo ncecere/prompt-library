@@ -3,11 +3,13 @@ FROM --platform=$BUILDPLATFORM oven/bun:1 AS builder
 WORKDIR /app
 
 # Copy package files
-COPY package*.json ./
+COPY package.json ./
 
 # Install dependencies
-RUN bun install
+RUN bun install --verbose
 RUN bun add critters
+RUN bun add wrap-ansi-cjs@7.0.0
+RUN bun add string-width-cjs@4.2.3
 
 # Copy the rest of the application
 COPY . .
